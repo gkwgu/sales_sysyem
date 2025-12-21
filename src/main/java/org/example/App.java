@@ -1,22 +1,12 @@
 package org.example;
 
+import org.example.parser.OrderManager;
 
-import org.example.model.Order;
-import org.example.service.OrderParser;
-import org.example.service.OrderService;
-import org.example.service.ResultWriter;
-
-import java.util.List;
-import java.util.Map;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        OrderParser parser = new OrderParser();
-        OrderService service = new OrderService();
-        ResultWriter writer = new ResultWriter();
+    public static void main(String[] args) {
+        OrderManager manager = new OrderManager();
+        manager.processor("discount_day.txt","result.txt",0.50, 0.05,0.1);
 
-        List<Order> orders = parser.readOrders("discount_day.txt");
-        Map<String, Double> result = service.process(orders);
-        writer.write("result.txt", result);
     }
 }

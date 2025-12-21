@@ -1,5 +1,6 @@
-package org.example.service;
+package org.example.parser;
 
+import org.example.exception.IORuntimeException;
 import org.example.model.Order;
 
 import java.io.BufferedReader;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class OrderParser {
 
-    public List<Order> readOrders(String filename) throws IOException {
+    public List<Order> readOrders(String filename) {
         List<Order> orders = new ArrayList<>();
 
         try (BufferedReader bufferedReader =
@@ -21,6 +22,11 @@ public class OrderParser {
             while ((line = bufferedReader.readLine()) != null) {
                 orders.add(parse(line));
             }
+        }
+        catch (IOException e) {
+            throw new IORuntimeException(
+                    "Ошибка чтения файла: " + filename, e
+            );
         }
 
         return orders;

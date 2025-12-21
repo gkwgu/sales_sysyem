@@ -3,7 +3,7 @@ package org.example.model;
 import java.time.LocalDateTime;
 
 public class Order {
-    private LocalDateTime time;
+    private final LocalDateTime time;
     private String company;
     private int weight;
 
