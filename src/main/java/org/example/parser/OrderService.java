@@ -10,7 +10,7 @@ import java.util.Map;
 public class OrderService {
 
     public Map<String, Double> process(List<Order> orders,double priceCement, double startDiscount, double discountStep) {
-        orders.sort(Comparator.comparing(Order::getTime));
+        orders.sort(Comparator.comparing(Order::getDateTime));
 
         Map<String, Double> result = new LinkedHashMap<>();
 
@@ -22,7 +22,7 @@ public class OrderService {
         return result;
     }
 
-    public double calculatePrice(Order order, int orderIndex, double startDiscount, double discountStep, double priceCement){
+    private double calculatePrice(Order order, int orderIndex, double startDiscount, double discountStep, double priceCement){
         double discount = startDiscount - orderIndex * discountStep;
         if (discount<0) {
             discount = 0;
