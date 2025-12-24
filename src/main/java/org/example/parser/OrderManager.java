@@ -12,9 +12,9 @@ public class OrderManager {
     private final OrderResultWriter writer;
 
     public OrderManager(OrderParser parser, OrderService service, OrderResultWriter writer){
-        this.parser=parser;
-        this.service=service;
-        this.writer=writer;
+        this.parser = parser;
+        this.service = service;
+        this.writer = writer;
 
     }
 

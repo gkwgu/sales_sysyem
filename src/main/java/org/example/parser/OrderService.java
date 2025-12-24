@@ -24,7 +24,7 @@ public class OrderService {
 
     private double calculatePrice(Order order, int orderIndex, double startDiscount, double discountStep, double priceCement){
         double discount = startDiscount - orderIndex * discountStep;
-        if (discount<0) {
+        if (discount < 0) {
             discount = 0;
         }
         double total = order.getWeight() * priceCement;
