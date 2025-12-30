@@ -12,6 +12,12 @@ import java.util.List;
 
 public class OrderParser {
 
+    private final IFileParserInterface parser;
+
+    public OrderParser(IFileParserInterface parser) {
+        this.parser = parser;
+    }
+
     public List<Order> readOrders(String filename) {
         List<Order> orders = new ArrayList<>();
 
@@ -20,7 +26,7 @@ public class OrderParser {
 
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                orders.add(parse(line));
+                orders.add(parser.parse(line));
             }
         }
         catch (IOException e) {
@@ -30,15 +36,5 @@ public class OrderParser {
         }
 
         return orders;
-    }
-
-    public Order parse(String line) {
-        String[] parts = line.split("\\|");
-
-        LocalDateTime time = LocalDateTime.parse(parts[0]);
-        String company = parts[1];
-        int weight = Integer.parseInt(parts[2]);
-
-        return new Order(time, company, weight);
     }
 }
