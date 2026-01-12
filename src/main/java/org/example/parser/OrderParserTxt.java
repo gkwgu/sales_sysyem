@@ -4,7 +4,7 @@ import org.example.model.Order;
 
 import java.time.LocalDateTime;
 
-public class TxtFileParser  implements IFileParserInterface {
+public class OrderParserTxt implements OrderParser {
     @Override
     public Order parse(String line) {
         String[] parts = line.split("\\|");
