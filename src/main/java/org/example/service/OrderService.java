@@ -1,4 +1,4 @@
-package org.example.process;
+package org.example.service;
 
 import org.example.model.Order;
 

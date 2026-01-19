@@ -2,8 +2,8 @@ package org.example;
 
 import org.example.parser.OrderParser;
 import org.example.process.OrderManager;
-import org.example.parser.OrderFileService;
-import org.example.process.OrderService;
+import org.example.service.OrderFileService;
+import org.example.service.OrderService;
 import org.example.parser.OrderParserTxt;
 
 
