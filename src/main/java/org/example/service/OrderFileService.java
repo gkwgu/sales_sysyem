@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OrderFileService {
 
@@ -27,18 +28,13 @@ public class OrderFileService {
         try (BufferedReader bufferedReader =
                      new BufferedReader(new FileReader(filename))) {
 
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                orders.add(parser.parse(line));
-            }
+           return bufferedReader.lines().map(parser::parse).collect(Collectors.toList());
         }
         catch (IOException e) {
             throw new IORuntimeException(
                     "Ошибка чтения файла: " + filename, e
             );
         }
-
-        return orders;
     }
 
     public void write(String filename, Map<String, Double> data) {
